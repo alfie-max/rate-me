@@ -9,7 +9,15 @@
     <%= "Repos Url : " + user.repos_url %> <br />
     <%= "Commits : " + user.g_commits.to_s %> <br />
   <% end %>
+
+  <% if user.stackoverflow == "true" %>
+    <%= "Github Id : " + user.s_uid.to_s %> <br />
+    <%= "StackOverflow Token : " + user.s_token %> <br />
+    <%= "Reputation : " + user.s_reputation.to_s %> <br />
+  <% end %>
+
   <% if user_signed_in? %>
     <%= link_to "Sync with Github", omniauth_authorize_path(user, "github") %><br />
+    <%= link_to "Sync with StackOverflow", omniauth_authorize_path(user, "stackexchange") %><br />
   <% end %>
 <% end %>
