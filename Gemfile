@@ -16,6 +16,9 @@ gem 'devise'
 
 gem 'figaro'
 
+gem 'omniauth'
+gem 'omniauth-github'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

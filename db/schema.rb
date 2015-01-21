@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119112301) do
+ActiveRecord::Schema.define(version: 20150121084736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,20 @@ ActiveRecord::Schema.define(version: 20150119112301) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "g_uid"
+    t.string   "github"
+    t.string   "g_login"
+    t.string   "g_token"
+    t.string   "repos_url"
+    t.integer  "g_commits"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["g_commits"], name: "index_users_on_g_commits", using: :btree
+  add_index "users", ["g_login"], name: "index_users_on_g_login", unique: true, using: :btree
+  add_index "users", ["g_token"], name: "index_users_on_g_token", using: :btree
+  add_index "users", ["g_uid"], name: "index_users_on_g_uid", unique: true, using: :btree
+  add_index "users", ["repos_url"], name: "index_users_on_repos_url", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

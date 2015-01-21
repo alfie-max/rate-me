@@ -1,4 +1,15 @@
 <% @users.each do |user| %>
   <%= "Name : " + user.name %> <br />
   <%= "Email Id : " + user.email %> <br />
+
+  <% if user.github == "true" %>
+    <%= "Github Id : " + user.g_uid.to_s %> <br />
+    <%= "Login Id : " + user.g_login %> <br />
+    <%= "Github Token : " + user.g_token %> <br />
+    <%= "Repos Url : " + user.repos_url %> <br />
+    <%= "Commits : " + user.g_commits.to_s %> <br />
+  <% end %>
+  <% if user_signed_in? %>
+    <%= link_to "Sync with Github", omniauth_authorize_path(user, "github") %><br />
+  <% end %>
 <% end %>

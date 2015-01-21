@@ -11,7 +11,7 @@
             <%= f.label :name %><br />
           </div>
           <div class="col-xs-12 col-sm-8 col-md-7">
-            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            <%= f.text_field :name, autofocus: true, class: "form-control", required: true %>
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
             <%= f.label :email %><br />
           </div>
           <div class="col-xs-12 col-sm-8 col-md-7">
-            <%= f.email_field :email, class: "form-control" %>
+            <%= f.email_field :email, class: "form-control", required: true %>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
             <% end %><br />
           </div>
           <div class="col-xs-12 col-sm-8 col-md-7">
-            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            <%= f.password_field :password, autocomplete: "off", class: "form-control", required: true %>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
             <%= f.label :password_confirmation %><br />
           </div>
           <div class="col-xs-12 col-sm-8 col-md-7">
-            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", required: true %>
           </div>
         </div>
       </div>
@@ -74,9 +74,3 @@
     </div>
   </div>
 <% end %>
-
-<div class="row">
-  <div class="col-xs-12 col-sm-8 col-md-7">
-    <%= render "devise/shared/links" %>
-  </div>
-</div>
