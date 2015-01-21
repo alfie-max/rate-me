@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
 
   def self.get_commit(user, email, token, repos_url)
     access_token = "?access_token=" + token
-    repos_url += access_token
+    repos_url = "https://api.github.com/users/" + user + "/repos" + access_token
+    orgs_url = "https://api.github.com/users/" + user + "/orgs" + access_token
     repos = JSON.parse(open(repos_url).read)
     commits = 0
     repos.each do |repo|

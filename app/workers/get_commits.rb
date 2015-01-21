@@ -1,7 +1,7 @@
 class GetCommits
   include Sidekiq::Worker
 
-  def perform(user, email, token, repos_url)
-    User.get_commit(user, email, token, repos_url)
+  def perform(user, email, token)
+    User.get_commit(user, email, token)
   end
 end
