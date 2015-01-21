@@ -8,6 +8,7 @@ class OmniauthController < ApplicationController
                   g_login: auth.extra.raw_info.login,
                   g_token: auth.credentials.token,
                   repos_url: auth.extra.raw_info.repos_url)
+      GetCommits.perform_async(user.g_login, user.email, user.g_token, user.repos_url)
       flash[:notice] = "Your Github account has been Synced !!"
       redirect_to root_url
     else

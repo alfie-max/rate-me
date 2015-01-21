@@ -19,6 +19,9 @@ gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-github'
 
+gem 'sidekiq'
+gem 'json'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
