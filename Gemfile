@@ -24,6 +24,8 @@ gem 'sidekiq'
 gem 'json'
 gem 'paperclip'
 
+gem 'whenever', :require => false
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
