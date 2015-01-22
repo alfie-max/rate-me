@@ -50,7 +50,7 @@
           <% if user_signed_in? %>
           <ul class="nav navbar-nav pull-right">
             <% if current_user.name.present? %>
-              <li><%= link_to current_user.name, "" %></li>
+              <li><%= link_to current_user.name, user_path(current_user) %></li>
             <% end %>
             <li><%= link_to "Edit Profile", edit_user_registration_path  %></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
