@@ -50,10 +50,13 @@ class User < ActiveRecord::Base
     path = "?order=desc&sort=reputation&site=stackoverflow"
     token_key = "&access_token=" + token.to_s + "&key=" + ENV["SE_KEY"]
     user_info_url = user_api + uid.to_s + path + token_key
-    user_info = JSON.parse(open(user_info_url).read)
-    reps =  user_info["items"][0]["reputation"]
-    user = User.find_by_s_uid(uid)
-    user.update(s_reputation: reps)
+    begin
+      user_info = JSON.parse(open(user_info_url).read)
+      reps =  user_info["items"][0]["reputation"]
+      user = User.find_by_s_uid(uid)
+      user.update(s_reputation: reps)
+    rescue JSON::ParserError, OpenURI::HTTPError
+    end
   end
 
   def self.auto_update
@@ -64,8 +67,8 @@ class User < ActiveRecord::Base
       g_token = user.g_token
       uid = user.s_uid
       s_token = user.s_token
-      User.get_user_commits(login.to_s, email, g_token.to_s)
-      User.get_user_reputation(uid.to_s, s_token.to_s)
+      User.get_user_commits(login, email, g_token) if g_token != nil
+      User.get_user_reputation(uid, s_token) if s_token != nil
     end
   end
 end
