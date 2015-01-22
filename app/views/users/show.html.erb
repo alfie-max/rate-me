@@ -21,7 +21,6 @@
         <div class="col-sm-4">
           <h4>e-mail</h4>
         </div>
-
         <div class="col-sm-8">
           <div class="info-box">
             <div class="col-xs-2 col-md-1 icon-pad">
@@ -34,7 +33,6 @@
         </div>
       </div>
     </div>
-
     <div class="row box">
       <div class="box">
         <div class="col-sm-4">
@@ -52,7 +50,6 @@
         </div>
       </div>
     </div>
-
     <div class="row box">
         <div class="box">
             <div class="col-sm-4">
@@ -84,8 +81,9 @@
         <% if @user.stackoverflow == "true" %>
           <%= link_to "Sync with StackOverflow", sync_stackoverflow_user_path(@user.id), class: "btn btn-warning connect-btn" %>
         <% else %>
-          <%= link_to "Connect with StackOverflow", omniauth_authorize_path(@user, "stackexchange", class: "btn btn-warning connect-btn") %>
+          <%= link_to "Connect with StackOverflow", omniauth_authorize_path(@user, "stackexchange"), class: "btn btn-warning connect-btn" %>
         <% end %>
       </div>
   </div>
+
 </div>
