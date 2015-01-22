@@ -12,12 +12,12 @@ class UsersController < ApplicationController
                               current_user.g_token)
       # User.delay.get_user_commits(current_user.g_login, current_user.email,
       #                       current_user.g_token)
-      redirect_to root_url
+      redirect_to user_path(current_user)
   end
 
   def sync_stackoverflow
       GetReputation.perform_async(current_user.s_uid, current_user.s_token)
-      redirect_to root_url
+      redirect_to user_path(current_user)
   end
 
   private

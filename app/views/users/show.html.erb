@@ -12,7 +12,7 @@
         <%= "Email Id : " + @user.email %> <br />
         <%= "Github Commits : " + @user.g_commits.to_s %> <br />
         <%= "StackOverflow Reps : " + @user.s_reputation.to_s %> <br />
-        <%= "StackOverflow Reps : " + @user.avatar.url %> <br />
+
         <% if @user.avatar.present? %>
           <%= image_tag(@user.avatar.url, class: "d-profile-picture") %> <br />
         <% else %>

@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
     token_key = "&access_token=" + token.to_s + "&key=" + ENV["SE_KEY"]
     user_info_url = user_api + uid.to_s + path + token_key
     user_info = JSON.parse(open(user_info_url).read)
-    reps =  user_info["items"][0]["reputation"] # it is an array....
+    reps =  user_info["items"][0]["reputation"]
     user = User.find_by_s_uid(uid)
     user.update(s_reputation: reps)
   end
