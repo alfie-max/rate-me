@@ -2,15 +2,15 @@ class OmniauthController < ApplicationController
 
   def github
     auth = request.env["omniauth.auth"]
-    if current_user.email == auth.raw_info.email
+    if current_user.email == auth.info.email
       current_user.update(github: "true", g_uid: auth.uid,
                           g_login: auth.extra.raw_info.login,
                           g_token: auth.credentials.token)
 
-      # GetCommits.perform_async(current_user.g_login, current_user.email,
-      #                         current_user.g_token)
-      User.delay.get_user_commits(current_user.g_login, current_user.email,
-                            current_user.g_token)
+      GetCommits.perform_async(current_user.g_login, current_user.email,
+                              current_user.g_token)
+      # User.delay.get_user_commits(current_user.g_login, current_user.email,
+      #                       current_user.g_token)
 
       flash[:notice] = "Your Github account has been Synced !!"
       redirect_to root_url

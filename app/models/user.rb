@@ -34,10 +34,21 @@ class User < ActiveRecord::Base
         contributors.each do |contributor|
         commits += contributor["contributions"] if contributor["login"] == user
         end
-      rescue JSON::ParserError
+      rescue JSON::ParserError, OpenURI::HTTPError
       end
     end
 
     return commits
+  end
+
+  def self.get_user_reputation(uid, token)
+    user_api = "https://api.stackexchange.com/2.2/users/"
+    path = "?order=desc&sort=reputation&site=stackoverflow"
+    token_key = "&access_token=" + token.to_s + "&key=" + ENV["SE_KEY"]
+    user_info_url = user_api + uid.to_s + path + token_key
+    user_info = JSON.parse(open(user_info_url).read)
+    reps =  user_info["items"][0]["reputation"] # it is an array....
+    user = User.find_by_s_uid(uid)
+    user.update(s_reputation: reps)
   end
 end

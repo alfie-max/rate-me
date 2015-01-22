@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resource :users do
     member do
       get :sync_github
+      get :sync_stackoverflow
     end
   end
 end
