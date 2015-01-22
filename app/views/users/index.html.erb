@@ -8,16 +8,16 @@
     <%= "Login Id : " + user.g_login %> <br />
     <%= "Github Token : " + user.g_token %> <br />
     <%= "Commits : " + user.g_commits.to_s %> <br />
+    <%= link_to "Sync with Github", sync_github_users_path %><br />
+  <% elsif current_user == user %>
+    <%= link_to "Sync with Github", omniauth_authorize_path(user, "github") %><br />
   <% end %>
 
   <% if user.stackoverflow == "true" %>
-    <%= "Github Id : " + user.s_uid.to_s %> <br />
+    <%= "StackOverflow Id : " + user.s_uid.to_s %> <br />
     <%= "StackOverflow Token : " + user.s_token %> <br />
     <%= "Reputation : " + user.s_reputation.to_s %> <br />
-  <% end %>
-
-  <% if user_signed_in? %>
-    <%= link_to "Sync with Github", omniauth_authorize_path(user, "github") %><br />
+  <% elsif current_user == user %>
     <%= link_to "Sync with StackOverflow", omniauth_authorize_path(user, "stackexchange") %><br />
   <% end %>
 <% end %>
