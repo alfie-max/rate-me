@@ -55,4 +55,17 @@ class User < ActiveRecord::Base
     user = User.find_by_s_uid(uid)
     user.update(s_reputation: reps)
   end
+
+  def self.auto_update
+    users = User.all
+    users.each do |user|
+      login = user.g_login
+      email = user.email
+      g_token = user.g_token
+      uid = user.s_uid
+      s_token = user.s_token
+      User.get_user_commits(login.to_s, email, g_token.to_s)
+      User.get_user_reputation(uid.to_s, s_token.to_s)
+    end
+  end
 end
