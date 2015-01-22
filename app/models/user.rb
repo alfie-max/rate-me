@@ -1,10 +1,14 @@
 require 'open-uri'
 require 'json'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_attached_file :avatar, :default_url => "/images/missing.jpg"
+  validates_attachment_content_type :avatar, :content_type => ["image/jpeg", "image/gif", "image/png", "image/jpg" ]
 
   def self.get_user_commits(user, email, token)
     access_token = "?access_token=" + token

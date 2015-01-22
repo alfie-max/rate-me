@@ -22,6 +22,7 @@ gem 'omniauth-stackexchange'
 
 gem 'sidekiq'
 gem 'json'
+gem 'paperclip'
 
 group :development, :test do
   gem 'byebug'

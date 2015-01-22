@@ -5,3 +5,32 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+
+.c-profile-picture img{
+  width:35px;
+  height:auto;
+  max-height:50px;
+  margin-top:-15px;
+  margin-right:-10px;
+  margin-bottom:-15px;
+}
+
+.d-profile-picture {
+  width:100px;
+  height:auto;
+  max-height:150px;
+}
+
+.rp-header{
+  background-color:#ee7863;
+}
+
+.rp-header .container a{
+  color: #fff;
+}
+
+.rp-header .container .nav a{
+  color: #fff;
+}
+
+

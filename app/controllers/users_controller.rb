@@ -19,4 +19,10 @@ class UsersController < ApplicationController
       GetReputation.perform_async(current_user.s_uid, current_user.s_token)
       redirect_to root_url
   end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:avatar)
+    end
 end

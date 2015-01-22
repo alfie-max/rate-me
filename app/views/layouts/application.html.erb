@@ -38,17 +38,23 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top">
+    <div class="navbar navbar-default navbar-static-top rp-header">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Rate Me</a>
+        <a class="navbar-brand" href="/">Rate Me</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <% if user_signed_in? %>
           <ul class="nav navbar-nav pull-right">
+            <% if current_user.avatar.present? %>
+              <li><%= link_to image_tag(current_user.avatar.url), user_path(current_user), class: "c-profile-picture" %></li>
+            <% else %>
+              <li><%= link_to image_tag("missing.jpg"), user_path(current_user), class: "c-profile-picture" %></li>
+            <% end %>
+
             <% if current_user.name.present? %>
               <li><%= link_to current_user.name, user_path(current_user) %></li>
             <% end %>
@@ -67,21 +73,10 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-12">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
       </div><!--/row-->
 
       <footer>
