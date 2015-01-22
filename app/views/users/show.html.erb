@@ -1,34 +1,91 @@
 <div class="container">
+
   <div class="row">
-    <div class="col-sm-4">
-
+    <div class="col-sm-4 col-md-3">
+      <% if @user.avatar.present? %>
+        <%= image_tag(@user.avatar.url, class: "sec-dp") %>
+      <% else %>
+        <%= image_tag("missing.jpg", class: "sec-dp") %>
+      <% end %>
     </div>
-
-    <div class="col-sm-8">
-        <h2><%= @user.name %></h2>
+    <div class="col-sm-8 col-md-9 name-wrap">
+      <div class="display-name sec-name">
+        <h1><%= @user.name %></h1>
+      </div>
     </div>
   </div>
 
-        <%= "Email Id : " + @user.email %> <br />
-        <%= "Github Commits : " + @user.g_commits.to_s %> <br />
-        <%= "StackOverflow Reps : " + @user.s_reputation.to_s %> <br />
+  <div class="sec-wrap">
+    <div class="row box">
+      <div class="box">
+        <div class="col-sm-4">
+          <h4>e-mail</h4>
+        </div>
 
-        <% if @user.avatar.present? %>
-          <%= image_tag(@user.avatar.url, class: "d-profile-picture") %> <br />
-        <% else %>
-          <%= image_tag("missing.jpg", class: "d-profile-picture") %> <br />
-        <% end %>
+        <div class="col-sm-8">
+          <div class="info-box">
+            <div class="col-xs-2 col-md-1 icon-pad">
+              <%= image_tag("email.png", class: "icon") %>
+            </div>
+            <div class="col-xs-10 col-md-11">
+              <p><%= @user.email %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="row box">
+      <div class="box">
+        <div class="col-sm-4">
+          <h4>Github Commits</h4>
+        </div>
+        <div class="col-sm-8">
+          <div class="info-box">
+            <div class="col-xs-2 col-md-1 icon-pad">
+              <%= image_tag("github.png", class: "icon") %>
+            </div>
+            <div class="col-xs-10 col-md-11">
+              <p><%= @user.g_commits.to_s %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row box">
+        <div class="box">
+            <div class="col-sm-4">
+              <h4>StackOverflow Reps</h4>
+            </div>
+            <div class="col-sm-8">
+                <div class="info-box">
+                    <div class="col-xs-2 col-md-1 icon-pad">
+                      <%= image_tag("stack.png", class: "icon") %>
+                    </div>
+                    <div class="col-xs-10 col-md-11">
+                      <p><%= @user.s_reputation.to_s %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="sec-wrap">
+      <div class="col-sm-6">
         <% if @user.github == "true" %>
-          <%= link_to "Sync with Github", sync_github_user_path(@user.id) %><br />
+          <%= link_to "Sync with Github", sync_github_user_path(@user.id), class: "btn btn-success connect-btn" %>
         <% else %>
-          <%= link_to "Connect with Github", omniauth_authorize_path(@user, "github") %><br />
+          <%= link_to "Connect with Github", omniauth_authorize_path(@user, "github"), class: "btn btn-success connect-btn" %>
         <% end %>
-
-
+      </div>
+      <div class="col-sm-6">
         <% if @user.stackoverflow == "true" %>
-          <%= link_to "Sync with StackOverflow", sync_stackoverflow_user_path(@user.id) %><br />
+          <%= link_to "Sync with StackOverflow", sync_stackoverflow_user_path(@user.id), class: "btn btn-warning connect-btn" %>
         <% else %>
-          <%= link_to "Connect with StackOverflow", omniauth_authorize_path(@user, "stackexchange") %><br />
+          <%= link_to "Connect with StackOverflow", omniauth_authorize_path(@user, "stackexchange", class: "btn btn-warning connect-btn") %>
         <% end %>
+      </div>
+  </div>
 </div>

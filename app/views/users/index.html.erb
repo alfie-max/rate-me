@@ -1,24 +1,18 @@
-<% @users.each do |user| %>
-  <br />
-  <%= "Name : " + user.name %> <br />
-  <%= "Email Id : " + user.email %> <br />
-
-  <% if user.github == "true" %>
-    <%= "Github Id : " + user.g_uid.to_s %> <br />
-    <%= "Login Id : " + user.g_login %> <br />
-    <%= "Github Token : " + user.g_token %> <br />
-    <%= "Commits : " + user.g_commits.to_s %> <br />
-    <%= link_to "Sync with Github", sync_github_user_path(user.id) %><br />
-  <% elsif current_user == user %>
-    <%= link_to "Connect with Github", omniauth_authorize_path(user, "github") %><br />
-  <% end %>
-
-  <% if user.stackoverflow == "true" %>
-    <%= "StackOverflow Id : " + user.s_uid.to_s %> <br />
-    <%= "StackOverflow Token : " + user.s_token %> <br />
-    <%= "Reputation : " + user.s_reputation.to_s %> <br />
-    <%= link_to "Sync with StackOverflow", sync_stackoverflow_user_path(user.id) %><br />
-  <% elsif current_user == user %>
-    <%= link_to "Connect with StackOverflow", omniauth_authorize_path(user, "stackexchange") %><br />
-  <% end %>
-<% end %>
+<table style="width:728px">
+  <thead>
+    <tr>
+        <th style="text-align:center;">Rank</th>
+        <th style="text-align:center;">Name</th>
+        <th style="text-align:center;">Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rank_list.each_with_index do |rank, index| %>
+        <tr>
+          <td style="text-align:center;"><%= index+1 %></td>
+          <td style="text-align:center;"><%= User.find_by_id(rank[0]).name %></td>
+          <td style="text-align:center;"><%= rank[1] %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

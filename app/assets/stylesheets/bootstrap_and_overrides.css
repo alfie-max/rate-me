@@ -6,6 +6,122 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
+body{
+  background: #fff;
+}
+.info-box{
+  height: 50px;
+  background: #fafafa;
+}
+
+.icon{
+  width: 50px
+}
+
+.box{
+  margin-bottom: 7px;
+}
+
+.box h4, .box p {
+  line-height: 50px;
+  padding: 0;
+  margin: 0;
+}
+
+.box .icon-pad{
+  padding: 0;
+}
+
+.sec-wrap{
+  background-color: #eaeaea;
+  margin-bottom: 7px;
+  padding: 20px;
+  width: 100%;
+  display: table;
+}
+
+.sec1-wrap{
+  margin-bottom: 7px;
+  padding: 20px;
+  width: 100%;
+  display: table;
+}
+
+.sec-dp{
+  background-color: #eaeaea;
+  margin-bottom: 7px;
+  padding: 0;
+    width: 100%;
+}
+
+.name-wrap{
+  padding-left: 0;
+}
+
+
+.sec-name{
+  background-color: #eaeaea;
+  padding: 20px;
+}
+
+.sec-name h1{
+    line-height: 173px;
+    padding: 0;
+    margin:0;
+}
+
+@media all and (min-width: 1200px){
+
+  .sec-name h1{
+    line-height: 222px;
+    padding: 0;
+    margin:0;
+    }
+}
+
+@media all and (max-width: 991px){
+
+  .sec-name h1{
+    line-height: 180px;
+    padding: 0;
+    margin:0;
+    }
+}
+
+@media all and (max-width: 767px){
+
+  .sec-name h1{
+    line-height: 50px;
+    padding: 0;
+    margin:0;
+    }
+
+    .sec-name{
+      margin-bottom: 7px;
+    }
+
+    .sec-dp{
+      max-width: 300px;
+        margin: 0 auto;
+        clear: both;
+        display: table;
+        margin-bottom: 7px;
+    }
+
+    .name-wrap{
+      padding-left: 15px;
+    }
+
+}
+
+
+.connect-btn{
+  width: 100%;
+  height: 45px;
+  padding: 10px 0;
+  margin-bottom: 7px;
+}
+
 .c-profile-picture img{
   width:35px;
   height:auto;
@@ -32,5 +148,45 @@
 .rp-header .container .nav a{
   color: #fff;
 }
+
+.btn{
+    border-radius: 0;
+}
+
+/* ----------------     edit form ---------------------- */
+
+
+@media all and (min-width: 767px) {
+.form-edit{
+  width: 70%;
+  margin:0 auto;
+  clear: both;
+}
+.cancel{
+  width: 70%;
+  margin:0 auto;
+  clear: both;
+}
+
+ }
+
+.cancel-btn{
+  background-color: #ee7863;
+  border-radius: 0;
+  border:none;
+}
+
+.cancel-btn:hover {
+  background-color: #834b41;
+}
+
+.login-box{
+  padding:30px;
+  background-color: rgba(0,0,0,.5);
+}
+
+
+
+
 
 

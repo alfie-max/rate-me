@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :get_rank_list, only: [:index]
+
   def index
-    @users = User.all
   end
 
   def show
@@ -22,7 +23,21 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:avatar)
+    def get_rank_list
+      @users = User.all
+      @rank_list = points = Array.new
+      @users.each do |user|
+        points << [user.id, (user.g_commits.to_i + user.s_reputation.to_i)]
+      end
+
+      scores = points.to_h.values.sort.reverse
+      scores.each do |score|
+          points.each do |point|
+              if point.include? score
+                @rank_list << points.delete(point)
+                break
+              end
+          end
+      end
     end
 end
