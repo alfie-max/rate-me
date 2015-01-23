@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       scores = points.to_h.values.sort.reverse
       scores.each do |score|
           points.each do |point|
-              if point.include? score
+              if point[1] == score
                 @rank_list << points.delete(point)
                 break
               end
