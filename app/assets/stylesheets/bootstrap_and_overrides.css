@@ -6,9 +6,30 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
+/* -------- header -------- */
+.rp-header{
+  background-color:#ee7863;
+}
+
+.rp-header .container a{
+  color: #fff;
+}
+
+.rp-header .container .nav a{
+  color: #fff;
+}
+
+.rm-content{
+  min-height: 500px;
+}
+
+
 body{
   background: #fff;
 }
+
+/* ----------- profile page -----------------  */
+
 .info-box{
   height: 50px;
   background: #fafafa;
@@ -62,10 +83,11 @@ body{
 .sec-name{
   background-color: #eaeaea;
   padding: 20px;
+  height: 213px;
 }
 
 .sec-name h1{
-    line-height: 173px;
+    line-height: 50px;
     padding: 0;
     margin:0;
 }
@@ -73,19 +95,28 @@ body{
 @media all and (min-width: 1200px){
 
   .sec-name h1{
-    line-height: 222px;
+    line-height: 50px;
     padding: 0;
     margin:0;
+    }
+
+    .sec-name{
+      height: 263px;
     }
 }
 
 @media all and (max-width: 991px){
 
   .sec-name h1{
-    line-height: 180px;
+    line-height: 50px;
     padding: 0;
     margin:0;
     }
+
+    .sec-name{
+      height: 220px;
+    }
+
 }
 
 @media all and (max-width: 767px){
@@ -137,17 +168,6 @@ body{
   max-height:150px;
 }
 
-.rp-header{
-  background-color:#ee7863;
-}
-
-.rp-header .container a{
-  color: #fff;
-}
-
-.rp-header .container .nav a{
-  color: #fff;
-}
 
 .btn{
     border-radius: 0;
@@ -180,13 +200,40 @@ body{
   background-color: #834b41;
 }
 
+
+/* ---------- login -----------  */
+
 .login-box{
   padding:30px;
   background-color: rgba(0,0,0,.5);
 }
 
+.login-box .btn{
+  width: 100%;
+}
+
+
+/* --------------------- table --------------*/
 
 
 
+@media all and (min-width: 991px){
 
+   .tbl{
+   margin: 0 auto;
+   width: 70%;
+   margin-top: 30px;   }
+}
 
+.tbl thead tr th{
+   border:none;
+   background-color: #373737;
+   padding: 6px;
+   margin: 2px;
+   color: #fff;
+}
+
+.tbl tbody tr td{
+  border-color: #fff;
+  background-color: #eaeaea;
+}
