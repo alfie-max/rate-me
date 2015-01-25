@@ -5,7 +5,7 @@ Devise.setup do |config|
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # config.secret_key = '6e45d1aa047b4b2d30ded016b8035a5ee4607c872708709200a28ea2d42e8a46db3e41c9ca1dd2a41bcc35af97501da1a76f078b32e64d5c7e39888dd0976849'
-
+  config.secret_key = 'd283fb544f36e76d7e79a1bce651b350a925b9bd9361a91cfa35ea3d25cf473e58b6f2b774bacfffdf64a15a66a2a6658e69ca3693d33f7dde81d970d3169bae'
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -234,7 +234,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   config.omniauth :github, ENV['GITHUB_ID'], ENV['GITHUB_SECRET'], scope: 'user,public_repo,repo'
   config.omniauth :stackexchange, ENV['SE_ID'], ENV['SE_SECRET'],
-                    public_key: ENV['SE_KEY'], site: 'stackoverflow'
+                    public_key: ENV['SE_KEY'], site: 'stackoverflow',
+                    scope: 'no_expiry'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
