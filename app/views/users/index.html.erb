@@ -16,17 +16,3 @@
     <% end %>
   </tbody>
 </table>
-
-<% if user_signed_in? %>
-  <% if current_user.github == "true" %>
-    <%= link_to "Sync with Github", sync_github_user_path(current_user.id), class: "btn btn-success connect-btn" %>
-  <% else %>
-    <%= link_to "Connect with Github", omniauth_authorize_path(current_user, "github"), class: "btn btn-success connect-btn" %>
-  <% end %>
-
-  <% if current_user.stackoverflow == "true" %>
-    <%= link_to "Sync with StackOverflow", sync_stackoverflow_user_path(current_user.id), class: "btn btn-warning connect-btn" %>
-  <% else %>
-    <%= link_to "Connect with StackOverflow", omniauth_authorize_path(current_user, "stackexchange"), class: "btn btn-warning connect-btn" %>
-  <% end %>
-<% end %>

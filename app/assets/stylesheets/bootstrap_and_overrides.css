@@ -20,12 +20,29 @@
 }
 
 .rm-content{
-  min-height: 500px;
+  min-height: 450px;
 }
 
 
 body{
   background: #fff;
+}
+
+.connect-icon li img{
+  width: 27px;
+}
+
+.connect-icon li img: hover{
+  width: 27px;
+}
+
+
+.rp-header .container .connect-icon a{
+  padding: 10px;
+}
+
+.rp-header .container .connect-icon a:hover {
+  opacity: .6;
 }
 
 /* ----------- profile page -----------------  */
@@ -236,4 +253,15 @@ body{
 .tbl tbody tr td{
   border-color: #fff;
   background-color: #eaeaea;
+}
+
+
+/* --------------------- login --------------*/
+
+.remember{
+  color: #fff;
+}
+
+.remember:hover {
+  color: #fff;
 }

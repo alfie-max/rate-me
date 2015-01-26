@@ -48,6 +48,22 @@
         <a class="navbar-brand" href="/">Rate Me</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <% if user_signed_in? %>
+          <ul class="nav navbar-nav pull-left connect-icon">
+              <% if user_signed_in? %>
+                <% if current_user.github == "true" %>
+                  <li data-toggle="tooltip" data-placement="right" title="Sync with Github"><%= link_to image_tag("git-icon.png") , sync_github_user_path(current_user.id) %></li>
+                <% else %>
+                  <li data-toggle="tooltip" data-placement="right" title="Connect with Github"><%= link_to image_tag("git-icon.png") , omniauth_authorize_path(current_user, "github") %></li>
+                <% end %>
+
+                <% if current_user.stackoverflow == "true" %>
+                  <li data-toggle="tooltip" data-placement="right" title="Sync with Stack Overflow"><%= link_to image_tag("stack-icon.png"), sync_stackoverflow_user_path(current_user.id) %></li>
+                <% else %>
+                  <li data-toggle="tooltip" data-placement="right" title="Connect with Stack Overflow"><%= link_to image_tag("stack-icon.png"), omniauth_authorize_path(current_user, "stackexchange") %></li>
+                <% end %>
+              <% end %>
+          </ul>
+
           <ul class="nav navbar-nav pull-right">
             <% if current_user.avatar.present? %>
               <li><%= link_to image_tag(current_user.avatar.url), user_path(current_user), class: "c-profile-picture" %></li>
