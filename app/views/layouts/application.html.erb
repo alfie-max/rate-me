@@ -51,15 +51,23 @@
           <ul class="nav navbar-nav pull-left connect-icon">
               <% if user_signed_in? %>
                 <% if current_user.github == "true" %>
-                  <li data-toggle="tooltip" data-placement="right" title="Sync with Github"><%= link_to image_tag("git-icon.png") , sync_github_user_path(current_user.id) %></li>
+                  <li data-toggle="tooltip" data-placement="right" title="Sync with Github">
+                    <%= link_to image_tag("git-icon.png") , sync_github_user_path(current_user.id) %>
+                  </li>
                 <% else %>
-                  <li data-toggle="tooltip" data-placement="right" title="Connect with Github"><%= link_to image_tag("git-icon.png") , omniauth_authorize_path(current_user, "github") %></li>
+                  <li data-toggle="tooltip" data-placement="right" title="Connect with Github">
+                    <%= link_to image_tag("git-icon.png") , omniauth_authorize_path(current_user, "github") %>
+                  </li>
                 <% end %>
 
                 <% if current_user.stackoverflow == "true" %>
-                  <li data-toggle="tooltip" data-placement="right" title="Sync with Stack Overflow"><%= link_to image_tag("stack-icon.png"), sync_stackoverflow_user_path(current_user.id) %></li>
+                  <li data-toggle="tooltip" data-placement="right" title="Sync with Stack Overflow">
+                    <%= link_to image_tag("stack-icon.png"), sync_stackoverflow_user_path(current_user.id) %>
+                  </li>
                 <% else %>
-                  <li data-toggle="tooltip" data-placement="right" title="Connect with Stack Overflow"><%= link_to image_tag("stack-icon.png"), omniauth_authorize_path(current_user, "stackexchange") %></li>
+                  <li data-toggle="tooltip" data-placement="right" title="Connect with Stack Overflow">
+                    <%= link_to image_tag("stack-icon.png"), omniauth_authorize_path(current_user, "stackexchange") %>
+                  </li>
                 <% end %>
               <% end %>
           </ul>
